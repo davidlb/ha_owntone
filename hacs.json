@@ -1,0 +1,6 @@
+{
+    "name": "ForkedDaapd Component",
+    "domains": ["media_player"],
+    "iot_class": "Cloud Polling",
+    "render_readme": true
+  }
