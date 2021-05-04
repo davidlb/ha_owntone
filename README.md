@@ -14,7 +14,8 @@ First you need to get the id of what you want to listen to using JSON API in you
 |GET|/api/library/artists/{id}/albums|Get list of albums for an artist|
 |GET|/api/library/albums|Get a list of albums|
 |GET|/api/library/albums/{id}/tracks|Get list of tracks for an album|
-For the full list of endpoints, check this [page](https://github.com/owntone/owntone-server/blob/master/README_JSON_API.md#library)
+
+For the full list of endpoints, check this [page](https://github.com/owntone/owntone-server/blob/master/README_JSON_API.md#library)  
 You can also use the [Search endpoint](https://github.com/owntone/owntone-server/blob/master/README_JSON_API.md#search).
 
 ## Example
