@@ -1,5 +1,6 @@
 # Forked-Daapd Component
-Forked from Core component to be able to play playlist, album or track by calling HA service
+Forked from Core component to be able to play playlist, album or track by calling HA service  
+**TTS is not working**
 
 ## How to get the uri for media_content_id?
 
