@@ -1,6 +1,7 @@
 {
   "domain": "forked_daapd_dleb",
   "name": "forked",
+  "version": "0.1",
   "documentation": "https://www.home-assistant.io/integrations/forked_daapd",
   "codeowners": ["@uvjustin"],
   "requirements": ["pyforked-daapd==0.1.11", "pylibrespot-java==0.1.0"],
