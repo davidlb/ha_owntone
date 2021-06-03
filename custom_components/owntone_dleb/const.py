@@ -19,12 +19,8 @@ from homeassistant.components.media_player.const import (
 CALLBACK_TIMEOUT = 8  # max time between command and callback from forked-daapd server
 CONF_LIBRESPOT_JAVA_PORT = "librespot_java_port"
 CONF_MAX_PLAYLISTS = "max_playlists"
-CONF_TTS_PAUSE_TIME = "tts_pause_time"
-CONF_TTS_VOLUME = "tts_volume"
 DEFAULT_PORT = 3689
 DEFAULT_SERVER_NAME = "My Server"
-DEFAULT_TTS_PAUSE_TIME = 1.2
-DEFAULT_TTS_VOLUME = 0.8
 DEFAULT_UNMUTE_VOLUME = 0.6
 DOMAIN = "owntone_dleb"  # key for hass.data
 FD_NAME = "owntone_dleb"
@@ -82,4 +78,3 @@ SUPPORTED_FEATURES = (
 SUPPORTED_FEATURES_ZONE = (
     SUPPORT_VOLUME_SET | SUPPORT_VOLUME_MUTE | SUPPORT_TURN_ON | SUPPORT_TURN_OFF
 )
-TTS_TIMEOUT = 20  # max time to wait between TTS getting sent and starting to play

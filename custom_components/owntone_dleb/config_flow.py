@@ -13,11 +13,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from .const import (
     CONF_LIBRESPOT_JAVA_PORT,
     CONF_MAX_PLAYLISTS,
-    CONF_TTS_PAUSE_TIME,
-    CONF_TTS_VOLUME,
     DEFAULT_PORT,
-    DEFAULT_TTS_PAUSE_TIME,
-    DEFAULT_TTS_VOLUME,
     DOMAIN,
 )
 
@@ -57,18 +53,6 @@ class ForkedDaapdOptionsFlowHandler(config_entries.OptionsFlow):
             step_id="init",
             data_schema=vol.Schema(
                 {
-                    vol.Optional(
-                        CONF_TTS_PAUSE_TIME,
-                        default=self.config_entry.options.get(
-                            CONF_TTS_PAUSE_TIME, DEFAULT_TTS_PAUSE_TIME
-                        ),
-                    ): float,
-                    vol.Optional(
-                        CONF_TTS_VOLUME,
-                        default=self.config_entry.options.get(
-                            CONF_TTS_VOLUME, DEFAULT_TTS_VOLUME
-                        ),
-                    ): float,
                     vol.Optional(
                         CONF_LIBRESPOT_JAVA_PORT,
                         default=self.config_entry.options.get(

@@ -30,10 +30,6 @@ from .const import (
     CALLBACK_TIMEOUT,
     CONF_LIBRESPOT_JAVA_PORT,
     CONF_MAX_PLAYLISTS,
-    CONF_TTS_PAUSE_TIME,
-    CONF_TTS_VOLUME,
-    DEFAULT_TTS_PAUSE_TIME,
-    DEFAULT_TTS_VOLUME,
     DEFAULT_UNMUTE_VOLUME,
     DOMAIN,
     FD_NAME,
@@ -53,7 +49,6 @@ from .const import (
     STARTUP_DATA,
     SUPPORTED_FEATURES,
     SUPPORTED_FEATURES_ZONE,
-    TTS_TIMEOUT,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -244,11 +239,6 @@ class ForkedDaapdMaster(MediaPlayerEntity):
         self._ip_address = (
             ip_address  # need to save this because pipe control is on same ip
         )
-        self._tts_pause_time = DEFAULT_TTS_PAUSE_TIME
-        self._tts_volume = DEFAULT_TTS_VOLUME
-        self._tts_requested = False
-        self._tts_queued = False
-        self._tts_playing_event = asyncio.Event()
         self._on_remove = None
         self._available = False
         self._clientsession = clientsession
@@ -318,10 +308,6 @@ class ForkedDaapdMaster(MediaPlayerEntity):
             self._pipe_control_api["librespot-java"] = LibrespotJavaAPI(
                 self._clientsession, self._ip_address, options[CONF_LIBRESPOT_JAVA_PORT]
             )
-        if CONF_TTS_PAUSE_TIME in options:
-            self._tts_pause_time = options[CONF_TTS_PAUSE_TIME]
-        if CONF_TTS_VOLUME in options:
-            self._tts_volume = options[CONF_TTS_VOLUME]
         if CONF_MAX_PLAYLISTS in options:
             # sources not updated until next _update_database call
             self._max_playlists = options[CONF_MAX_PLAYLISTS]
@@ -331,9 +317,6 @@ class ForkedDaapdMaster(MediaPlayerEntity):
         self._player = player
         self._player_last_updated = utcnow()
         self._update_track_info()
-        if self._tts_queued:
-            self._tts_playing_event.set()
-            self._tts_queued = False
         if self._pause_requested:
             self._paused_event.set()
             self._pause_requested = False
@@ -342,14 +325,6 @@ class ForkedDaapdMaster(MediaPlayerEntity):
     @callback
     def _update_queue(self, queue, event):
         self._queue = queue
-        if (
-            self._tts_requested
-            and self._queue["count"] == 1
-            and self._queue["items"][0]["uri"].find("tts_proxy") != -1
-        ):
-            self._tts_requested = False
-            self._tts_queued = True
-
         if (
             self._queue["count"] >= 1
             and self._queue["items"][0]["data_kind"] == "pipe"
@@ -625,21 +600,6 @@ class ForkedDaapdMaster(MediaPlayerEntity):
         if url:
             url = self._api.full_url(url)
         return url
-
-    async def _save_and_set_tts_volumes(self):
-        if self.volume_level:  # save master volume
-            self._last_volume = self.volume_level
-        self._last_outputs = self._outputs
-        if self._outputs:
-            await self._api.set_volume(volume=self._tts_volume * 100)
-            futures = []
-            for output in self._outputs:
-                futures.append(
-                    self._api.change_output(
-                        output["id"], selected=True, volume=self._tts_volume * 100
-                    )
-                )
-            await asyncio.wait(futures)
 
     async def _pause_and_wait_for_callback(self):
         """Send pause and wait for the pause callback to be received."""
