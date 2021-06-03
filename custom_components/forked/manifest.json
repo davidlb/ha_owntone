@@ -1,6 +1,6 @@
 {
-  "domain": "owntone_dleb",
-  "name": "owntone",
+  "domain": "forked_daapd_dleb",
+  "name": "forked",
   "version": "0.1",
   "documentation": "https://www.home-assistant.io/integrations/forked_daapd",
   "codeowners": ["@uvjustin", "@davidlb"],
