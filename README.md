@@ -1,4 +1,4 @@
-# Forked-Daapd Component
+# OwnTone Component
 Forked from Core component to be able to play playlist, album or track by calling HA service  
 **TTS is not working**
 
