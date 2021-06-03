@@ -6,7 +6,7 @@
         "title": "Set up OwnTone device",
         "data": {
           "name": "Friendly name",
-          "host": "[%key:common::config_flow::data::host%]",
+          "host": "Host",
           "port": "API port",
           "password": "API password (leave blank if no password)"
         }
@@ -18,7 +18,7 @@
       "wrong_host_or_port": "Unable to connect. Please check host and port.",
       "wrong_password": "Incorrect password.",
       "wrong_server_type": "The OwnTone integration requires a OwnTone server with version >= 27.0.",
-      "unknown_error": "[%key:common::config_flow::error::unknown%]"
+      "unknown_error": "Unknwon error."
     },
     "abort": {
       "already_configured": "Device already configured",
