@@ -1,5 +1,5 @@
 {
-    "name": "ForkedDaapd Component",
+    "name": "OwnTone Component",
     "domains": ["media_player"],
     "iot_class": "Cloud Polling",
     "render_readme": true
