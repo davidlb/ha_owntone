@@ -1,6 +1,5 @@
 {
     "name": "OwnTone Component",
     "domains": ["media_player"],
-    "iot_class": "cloud_polling",
     "render_readme": true
   }
