@@ -149,6 +149,13 @@ class ForkedDaapdZone(MediaPlayerEntity):
         return f"{self._entry_id}-{self._output_id}"
 
     @property
+    def device_info(self):
+        """Return device info for this device."""
+        return {
+            "identifiers": {(DOMAIN, self._entry_id)},
+        }
+
+    @property
     def should_poll(self) -> bool:
         """Entity pushes its state to HA."""
         return False
@@ -375,6 +382,15 @@ class ForkedDaapdMaster(MediaPlayerEntity):
     def unique_id(self):
         """Return unique ID."""
         return self._config_entry.entry_id
+
+    @property
+    def device_info(self):
+        """Return device info for this device."""
+        return {
+            "identifiers": {(DOMAIN, self.unique_id)},
+            "name": self.name,
+            "manufacturer": FD_NAME,
+        }
 
     @property
     def should_poll(self) -> bool:
