@@ -642,8 +642,8 @@ class ForkedDaapdMaster(MediaPlayerEntity):
 
         if media_type == MEDIA_TYPE_MUSIC:
             _LOGGER.debug("Play Media '%s'", media_id)
-              """ media_id = async_process_play_media_url(self.hass, media_id) """
-             await self._api.add_to_queue(uris=media_id, playback="start", clear=True)
+            """ media_id = async_process_play_media_url(self.hass, media_id) """
+            await self._api.add_to_queue(uris=media_id, playback="start", clear=True)
         else:
             _LOGGER.debug("Media type '%s' not supported", media_type)
 
