@@ -1,5 +1,21 @@
 """Const for forked-daapd."""
-from homeassistant.components.media_player import MediaPlayerEntityFeature
+from homeassistant.components.media_player.const import (
+    SUPPORT_BROWSE_MEDIA,
+    SUPPORT_CLEAR_PLAYLIST,
+    SUPPORT_NEXT_TRACK,
+    SUPPORT_PAUSE,
+    SUPPORT_PLAY,
+    SUPPORT_PLAY_MEDIA,
+    SUPPORT_PREVIOUS_TRACK,
+    SUPPORT_SEEK,
+    SUPPORT_SELECT_SOURCE,
+    SUPPORT_SHUFFLE_SET,
+    SUPPORT_STOP,
+    SUPPORT_TURN_OFF,
+    SUPPORT_TURN_ON,
+    SUPPORT_VOLUME_MUTE,
+    SUPPORT_VOLUME_SET,
+)
 
 CALLBACK_TIMEOUT = 8  # max time between command and callback from forked-daapd server
 CONF_LIBRESPOT_JAVA_PORT = "librespot_java_port"
@@ -45,25 +61,22 @@ STARTUP_DATA = {
     "outputs": [],
 }
 SUPPORTED_FEATURES = (
-    MediaPlayerEntityFeature.PLAY
-    | MediaPlayerEntityFeature.PAUSE
-    | MediaPlayerEntityFeature.STOP
-    | MediaPlayerEntityFeature.SEEK
-    | MediaPlayerEntityFeature.VOLUME_SET
-    | MediaPlayerEntityFeature.VOLUME_MUTE
-    | MediaPlayerEntityFeature.PREVIOUS_TRACK
-    | MediaPlayerEntityFeature.NEXT_TRACK
-    | MediaPlayerEntityFeature.CLEAR_PLAYLIST
-    | MediaPlayerEntityFeature.SELECT_SOURCE
-    | MediaPlayerEntityFeature.SHUFFLE_SET
-    | MediaPlayerEntityFeature.TURN_ON
-    | MediaPlayerEntityFeature.TURN_OFF
-    | MediaPlayerEntityFeature.PLAY_MEDIA
-    | MediaPlayerEntityFeature.BROWSE_MEDIA
+    SUPPORT_PLAY
+    | SUPPORT_PAUSE
+    | SUPPORT_STOP
+    | SUPPORT_SEEK
+    | SUPPORT_VOLUME_SET
+    | SUPPORT_VOLUME_MUTE
+    | SUPPORT_PREVIOUS_TRACK
+    | SUPPORT_NEXT_TRACK
+    | SUPPORT_CLEAR_PLAYLIST
+    | SUPPORT_SELECT_SOURCE
+    | SUPPORT_SHUFFLE_SET
+    | SUPPORT_TURN_ON
+    | SUPPORT_TURN_OFF
+    | SUPPORT_PLAY_MEDIA
+    | SUPPORT_BROWSE_MEDIA
 )
 SUPPORTED_FEATURES_ZONE = (
-    MediaPlayerEntityFeature.VOLUME_SET
-    | MediaPlayerEntityFeature.VOLUME_MUTE
-    | MediaPlayerEntityFeature.TURN_ON
-    | MediaPlayerEntityFeature.TURN_OFF
+    SUPPORT_VOLUME_SET | SUPPORT_VOLUME_MUTE | SUPPORT_TURN_ON | SUPPORT_TURN_OFF
 )
