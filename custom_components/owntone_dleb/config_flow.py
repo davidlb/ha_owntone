@@ -142,16 +142,16 @@ class ForkedDaapdFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_zeroconf(self, discovery_info):
         """Prepare configuration for a discovered forked-daapd device."""
         version_num = 0
-        if discovery_info.get("properties") and discovery_info["properties"].get(
+        if discovery_info.properties and discovery_info.properties.get(
             "Machine Name"
         ):
             with suppress(ValueError):
                 version_num = int(
-                    discovery_info["properties"].get("mtd-version", "0").split(".")[0]
+                    discovery_info.properties.get("mtd-version", "0").split(".")[0]
                 )
         if version_num < 27:
             return self.async_abort(reason="not_forked_daapd")
-        await self.async_set_unique_id(discovery_info["properties"]["Machine Name"])
+        await self.async_set_unique_id(discovery_info.properties["Machine Name"])
         self._abort_if_unique_id_configured()
 
         # Update title and abort if we already have an entry for this host
