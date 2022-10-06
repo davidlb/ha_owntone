@@ -1,4 +1,4 @@
-# :warning: Since HomeAssistant 2022.10.0, you should switch back to the core component (better support and more features)
+# :warning: Since HomeAssistant 2022.10, you should switch back to the core component (better support and more features)
 
 # OwnTone Component
 Forked from Core component to be able to play playlist, album or track by calling HA service  
