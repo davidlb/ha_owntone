@@ -1,4 +1,4 @@
-**GIT Repository, Component and Entities have been renamed to use new name OwnTone, upgrade from previous version in HACS won't work. You need to deinstall repository, restart server, add new repository and finally restart again. You also need to update scripts, cards to use new entities.**
+# :warning: Since HomeAssistant 2022.10.0, you should switch back to the core component (better support and more features)
 
 # OwnTone Component
 Forked from Core component to be able to play playlist, album or track by calling HA service  
